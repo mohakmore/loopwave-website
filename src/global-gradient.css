@@ -1,0 +1,40 @@
+:root {
+  --twst-yellow-1: #f5c400;
+  --twst-yellow-2: #d4a800;
+  --twst-black-1: #000000;
+  --twst-black-2: #0b0b0b;
+  --twst-black-3: #1a1a1a;
+}
+
+/* Reset */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* GLOBAL BACKGROUND */
+body {
+  background: linear-gradient(
+    135deg,
+    var(--twst-black-1) 0%,
+    var(--twst-black-2) 35%,
+    var(--twst-black-3) 60%,
+    var(--twst-yellow-1) 100%
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  color: #ffffff;
+  overflow-x: hidden !important;
+}
+
+/* Root wrapper */
+#root {
+  min-height: 100vh;
+}
+
+/* Remove white backgrounds from sections */
+section {
+  background: transparent !important;
+}
