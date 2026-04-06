@@ -102,35 +102,35 @@ const HeroSection = ({ onPortfolioOpen }: HeroSectionProps) => {
                 </button>
               </div>
             </div>
-
-            {/* Mobile Menu */}
-            <div
-              className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-40 transition-all duration-500 ease-out flex items-center justify-center ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-                }`}
-            >
-              <div className="flex flex-col items-center gap-8 w-full px-8">
-                {navLinks.map((link, i) => (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    className="text-4xl heading-modern font-bold text-foreground/90 hover:text-primary transition-all duration-300"
-                    style={{ transitionDelay: `${i * 50}ms`, transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)', opacity: isMobileMenuOpen ? 1 : 0 }}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ))}
-                <div className="w-full mt-6" style={{ transitionDelay: '300ms' }}>
-                  <a href="#contact" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="default" className="w-full rounded-full py-8 text-xl bg-primary shadow-lg border border-primary/50">
-                      CONTACT US
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
           </div>
         </nav>
+
+        {/* Mobile Menu */}
+        <div
+          className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-[45] transition-all duration-500 ease-out flex items-center justify-center ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+            }`}
+        >
+          <div className="flex flex-col items-center gap-8 w-full px-8">
+            {navLinks.map((link, i) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-4xl heading-modern font-bold text-foreground/90 hover:text-primary transition-all duration-300"
+                style={{ transitionDelay: `${i * 50}ms`, transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(20px)', opacity: isMobileMenuOpen ? 1 : 0 }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <div className="w-full mt-6" style={{ transitionDelay: '300ms' }}>
+              <a href="#contact" className="w-full" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button variant="default" className="w-full rounded-full py-8 text-xl bg-primary shadow-lg border border-primary/50">
+                  CONTACT US
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div className="w-full px-6 lg:pl-32 lg:pr-32 relative z-10 flex-1 flex flex-col lg:flex-row items-center justify-between mt-40 lg:mt-12 gap-10 pt-24 pb-20">
           

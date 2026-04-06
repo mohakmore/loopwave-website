@@ -125,30 +125,30 @@ const ContactSection = () => {
                </div>
 
                <div className="grid gap-6">
-                  <div className="contact-card p-8 rounded-3xl group cursor-pointer relative overflow-hidden">
-                     <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-[#EAB308]/10 flex items-center justify-center group-hover:bg-[#EAB308] transition-all duration-500">
-                           <Mail className="w-6 h-6 text-[#EAB308] group-hover:text-black transition-colors" />
+                  <div className="contact-card p-6 sm:p-8 rounded-3xl group cursor-pointer relative overflow-hidden flex items-center">
+                     <div className="flex items-center gap-4 sm:gap-6 w-full">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#EAB308]/10 flex items-center justify-center group-hover:bg-[#EAB308] transition-all duration-500 shrink-0">
+                           <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-[#EAB308] group-hover:text-black transition-colors" />
                         </div>
-                        <div>
-                           <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Email Our Team</p>
-                           <p className="text-white text-lg font-medium">loopwavemedia.india@gmail.com</p>
+                        <div className="min-w-0 flex-1 pr-6 sm:pr-8">
+                           <p className="text-white/40 text-[10px] sm:text-xs uppercase tracking-widest mb-1">Email Our Team</p>
+                           <p className="text-white text-sm sm:text-lg font-medium break-all sm:break-normal">loopwavemedia.india@gmail.com</p>
                         </div>
                      </div>
-                     <ArrowUpRight className="absolute top-8 right-8 w-5 h-5 text-white/20 group-hover:text-[#EAB308] transition-colors" />
+                     <ArrowUpRight className="absolute top-6 sm:top-8 right-6 sm:right-8 w-4 h-4 sm:w-5 sm:h-5 text-white/20 group-hover:text-[#EAB308] transition-colors" />
                   </div>
 
-                  <div className="contact-card p-8 rounded-3xl group cursor-pointer relative overflow-hidden">
-                     <div className="flex items-center gap-6">
-                        <div className="w-14 h-14 rounded-2xl bg-[#EAB308]/10 flex items-center justify-center group-hover:bg-[#EAB308] transition-all duration-500">
-                           <Phone className="w-6 h-6 text-[#EAB308] group-hover:text-black transition-colors" />
+                  <div className="contact-card p-6 sm:p-8 rounded-3xl group cursor-pointer relative overflow-hidden flex items-center">
+                     <div className="flex items-center gap-4 sm:gap-6 w-full">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#EAB308]/10 flex items-center justify-center group-hover:bg-[#EAB308] transition-all duration-500 shrink-0">
+                           <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#EAB308] group-hover:text-black transition-colors" />
                         </div>
-                        <div>
-                           <p className="text-white/40 text-xs uppercase tracking-widest mb-1">Direct Line</p>
-                           <p className="text-white text-lg font-medium">+91 9987206344</p>
+                        <div className="min-w-0 flex-1 pr-6 sm:pr-8">
+                           <p className="text-white/40 text-[10px] sm:text-xs uppercase tracking-widest mb-1">Direct Line</p>
+                           <p className="text-white text-sm sm:text-lg font-medium">+91 9987206344</p>
                         </div>
                      </div>
-                     <ArrowUpRight className="absolute top-8 right-8 w-5 h-5 text-white/20 group-hover:text-[#EAB308] transition-colors" />
+                     <ArrowUpRight className="absolute top-6 sm:top-8 right-6 sm:right-8 w-4 h-4 sm:w-5 sm:h-5 text-white/20 group-hover:text-[#EAB308] transition-colors" />
                   </div>
                </div>
 
