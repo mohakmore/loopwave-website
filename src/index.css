@@ -69,6 +69,8 @@
 
   html {
     scroll-behavior: smooth;
+    @apply bg-background;
+    background-color: hsl(var(--background));
   }
 
   body {

@@ -107,10 +107,10 @@ const HeroSection = ({ onPortfolioOpen }: HeroSectionProps) => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden fixed inset-0 bg-background/98 backdrop-blur-xl z-[45] transition-all duration-500 ease-out flex items-center justify-center ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          className={`lg:hidden fixed inset-0 bg-[#050505] z-[45] transition-all duration-500 ease-out flex items-start justify-center overflow-y-auto ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
         >
-          <div className="flex flex-col items-center gap-8 w-full px-8">
+          <div className="flex flex-col items-center gap-8 w-full px-8 pt-32 pb-20">
             {navLinks.map((link, i) => (
               <a
                 key={link.name}

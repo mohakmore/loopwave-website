@@ -86,10 +86,10 @@ const LoadingScreen = () => {
                 }}
                 className="flex flex-col items-center md:items-start pl-4 md:pl-10"
               >
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-black heading-modern text-gradient tracking-tighter uppercase whitespace-nowrap leading-[0.9]">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black heading-modern text-gradient tracking-tighter uppercase whitespace-nowrap leading-[0.9]">
                   YOUR HOME OF
                 </h1>
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-extralight heading-modern text-white/30 tracking-[0.4em] md:tracking-[0.6em] uppercase whitespace-nowrap -mt-1 md:-mt-2">
+                <h1 className="text-[1.3rem] sm:text-3xl md:text-5xl lg:text-6xl font-extralight heading-modern text-white/30 tracking-[0.25em] sm:tracking-[0.4em] md:tracking-[0.6em] uppercase whitespace-nowrap mt-1 md:-mt-2">
                   DIGITAL PRESENCE
                 </h1>
               </motion.div>
