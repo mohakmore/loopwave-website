@@ -189,7 +189,7 @@ const HeroSection = ({ onPortfolioOpen }: HeroSectionProps) => {
           </div>
 
           {/* Right: react-globe.gl Globe with concentric rings */}
-          <div className="w-full lg:w-[45%] relative h-[500px] sm:h-[620px] lg:h-[760px] mt-10 lg:mt-0 flex justify-center lg:justify-end items-center z-10 animate-fade-in-up delay-400">
+          <div className="hidden lg:flex w-full lg:w-[45%] relative h-[500px] sm:h-[620px] lg:h-[760px] mt-10 lg:mt-0 justify-center lg:justify-end items-center z-10 animate-fade-in-up delay-400">
 
             {/* Globe container with concentric rings */}
             <div className="relative w-full max-w-[700px] aspect-square z-10 lg:scale-100">

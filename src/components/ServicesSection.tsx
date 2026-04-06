@@ -77,9 +77,14 @@ const ServicesSection = () => {
         
         .spotlight-section {
           font-family: 'Poppins', sans-serif;
-          cursor: none;
-          mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-          -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+        }
+
+        @media (min-width: 1024px) {
+          .spotlight-section {
+            cursor: none;
+            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+          }
         }
 
         .heading-spotlight {
@@ -123,16 +128,25 @@ const ServicesSection = () => {
 
         .service-tile {
           transition: all 0.5s ease;
-          opacity: 0.15;
-          filter: grayscale(1) blur(2px);
         }
 
-        /* Target the tile under the spotlight using proximity logic is hard with pure CSS, 
-           so we use a simpler 'active' feel */
-        .service-tile:hover {
-          opacity: 1;
-          filter: grayscale(0) blur(0);
-          transform: scale(1.05);
+        @media (min-width: 1024px) {
+          .service-tile {
+            opacity: 0.15;
+            filter: grayscale(1) blur(2px);
+          }
+
+          .service-tile:hover {
+            opacity: 1;
+            filter: grayscale(0) blur(0);
+            transform: scale(1.05);
+          }
+        }
+
+        @media (max-width: 1023px) {
+          .spotlight-reveal, .custom-cursor {
+            display: none !important;
+          }
         }
 
         .text-glow {
