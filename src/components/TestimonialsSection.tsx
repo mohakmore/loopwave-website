@@ -57,7 +57,7 @@ const TestimonialCard = ({ testimonial, index, progress, range, targetScale }: a
           background: `linear-gradient(135deg, rgba(234, 179, 8, 0.12) 0%, rgba(20, 20, 20, 0.4) 50%, rgba(234, 179, 8, 0.05) 100%)`,
           top: `calc(5% + ${index * 20}px)`
         }}
-        className="relative w-full max-w-[850px] h-[360px] sm:h-[460px] rounded-[2.5rem] p-8 sm:p-12 flex flex-col justify-between border border-white/10 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(255,255,255,0.05)]"
+        className="relative w-full max-w-[850px] h-[360px] sm:h-[460px] rounded-[2.5rem] p-8 sm:p-12 flex flex-col justify-between border border-white/10 overflow-hidden backdrop-blur-[32px] shadow-[0_0_50px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(255,255,255,0.05)]"
       >
         {/* Superior Mirror Reflection Layer */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.08] via-transparent to-transparent pointer-events-none z-0" />
