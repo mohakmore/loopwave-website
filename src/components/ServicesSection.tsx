@@ -24,7 +24,6 @@ const ServicesSection = () => {
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const sectionRef = useRef<HTMLElement>(null);
 
-  // 🔥 throttled mouse tracking (smooth + low CPU)
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!sectionRef.current) return;
 
@@ -48,21 +47,21 @@ const ServicesSection = () => {
           font-family: 'Space Grotesk', sans-serif;
         }
 
-        /* 🔥 LIGHTWEIGHT SPOTLIGHT */
+        /* 🔥 BIGGER + STRONGER SPOTLIGHT */
         .spotlight-overlay {
           position: absolute;
           inset: 0;
           pointer-events: none;
           z-index: 2;
           background: radial-gradient(
-            circle 220px at var(--x) var(--y),
-            rgba(234,179,8,0.18),
-            rgba(0,0,0,0.85) 60%
+            circle 350px at var(--x) var(--y),
+            rgba(234,179,8,0.25),
+            rgba(0,0,0,0.92) 65%
           );
-          transition: background 0.1s linear;
+          transition: background 0.08s linear;
         }
 
-        /* 🔥 NO BLUR, ONLY OPACITY */
+        /* 🔥 CLEAN PERFORMANCE CARDS */
         .service-tile {
           opacity: 0.25;
           transition: transform 0.4s ease, opacity 0.4s ease;
@@ -71,10 +70,29 @@ const ServicesSection = () => {
 
         .service-tile:hover {
           opacity: 1;
-          transform: translateY(-5px) scale(1.03);
+          transform: translateY(-6px) scale(1.04);
         }
 
-        /* MOBILE CLEAN */
+        /* 🔥 PERFECT ROUND ICON */
+        .icon-circle {
+          width: 64px;
+          height: 64px;
+          border-radius: 999px;
+          border: 1px solid rgba(234,179,8,0.25);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: rgba(234,179,8,0.08);
+          transition: all 0.4s ease;
+        }
+
+        .service-tile:hover .icon-circle {
+          background: #EAB308;
+          transform: scale(1.1);
+          box-shadow: 0 0 25px rgba(234,179,8,0.4);
+        }
+
+        /* MOBILE */
         @media (max-width: 1023px) {
           .spotlight-overlay {
             display: none;
@@ -95,7 +113,7 @@ const ServicesSection = () => {
           '--y': `${mousePos.y}%`
         } as any}
       >
-        {/* 🔥 Spotlight Layer */}
+        {/* Spotlight */}
         <div className="spotlight-overlay" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
@@ -120,9 +138,11 @@ const ServicesSection = () => {
                   {service.category}
                 </div>
 
-                <div className="flex gap-6">
-                  <div className="w-12 h-12 rounded-full border border-[#EAB308]/20 flex items-center justify-center group-hover:bg-[#EAB308] transition">
-                    <service.icon className="w-5 h-5 text-[#EAB308] group-hover:text-black" />
+                <div className="flex gap-6 items-start">
+                  
+                  {/* 🔥 ROUND ICON */}
+                  <div className="icon-circle">
+                    <service.icon className="w-6 h-6 text-[#EAB308] group-hover:text-black transition-colors" />
                   </div>
 
                   <div>
