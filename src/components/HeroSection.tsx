@@ -56,7 +56,7 @@ const HeroSection = ({ onPortfolioOpen }: HeroSectionProps) => {
         {/* Navbar */}
         <nav
           className={`w-full transition-all duration-500 z-50 fixed top-0 left-0 ${isScrolled
-            ? 'bg-background/80 backdrop-blur-xl border-b border-foreground/5 shadow-sm py-3'
+            ? 'bg-background/80 border-b border-foreground/5 shadow-sm py-3'
             : 'bg-transparent py-5'
             }`}
         >
