@@ -291,3 +291,7 @@ html.lenis, html.lenis body {
 section {
   background: transparent !important;
 }
+* {
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
