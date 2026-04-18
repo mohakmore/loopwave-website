@@ -7,229 +7,143 @@ import {
   FileText,
   Video,
   TrendingUp,
-  ArrowRight,
-  MousePointer2
+  ArrowRight
 } from 'lucide-react';
 
 const services = [
-  {
-    icon: Share2,
-    title: 'Social Media Marketing',
-    description: 'Strategizing and managing your social presence to build engaged communities that convert into loyal brand advocates.',
-    category: 'Engagement'
-  },
-  {
-    icon: Users,
-    title: 'Influencer Marketing',
-    description: 'Connecting your brand with the right voices to amplify your message and reach highly targeted audiences effectively.',
-    category: 'Collaboration'
-  },
-  {
-    icon: Palette,
-    title: 'Graphic Design',
-    description: 'Crafting unique visual languages and logos that define your brand and separate you from the competition.',
-    category: 'Visuals'
-  },
-  {
-    icon: Search,
-    title: 'SEO',
-    description: 'Comprehensive search engine optimization to place your brand at the very top of search rankings and drive organic traffic.',
-    category: 'Optimization'
-  },
-  {
-    icon: FileText,
-    title: 'Content Marketing',
-    description: 'High-value storytelling and content creation that educates, inspires, and drives meaningful customer action.',
-    category: 'Storytelling'
-  },
-  {
-    icon: Video,
-    title: 'Video Editing',
-    description: 'High-end cinematic editing and storytelling that captures your brand essence in every frame and pixel.',
-    category: 'Creativity'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Strategy Marketing',
-    description: 'Data-backed growth roadmaps and market strategies designed to scale your business and maximize your marketing ROI.',
-    category: 'Growth'
-  }
+  { icon: Share2, title: 'Social Media Marketing', description: 'Strategizing and managing your social presence to build engaged communities that convert into loyal brand advocates.', category: 'Engagement' },
+  { icon: Users, title: 'Influencer Marketing', description: 'Connecting your brand with the right voices to amplify your message and reach highly targeted audiences effectively.', category: 'Collaboration' },
+  { icon: Palette, title: 'Graphic Design', description: 'Crafting unique visual languages and logos that define your brand and separate you from the competition.', category: 'Visuals' },
+  { icon: Search, title: 'SEO', description: 'Comprehensive search engine optimization to place your brand at the very top of search rankings and drive organic traffic.', category: 'Optimization' },
+  { icon: FileText, title: 'Content Marketing', description: 'High-value storytelling and content creation that educates, inspires, and drives meaningful customer action.', category: 'Storytelling' },
+  { icon: Video, title: 'Video Editing', description: 'High-end cinematic editing and storytelling that captures your brand essence in every frame and pixel.', category: 'Creativity' },
+  { icon: TrendingUp, title: 'Strategy Marketing', description: 'Data-backed growth roadmaps and market strategies designed to scale your business and maximize your marketing ROI.', category: 'Growth' }
 ];
 
 const ServicesSection = () => {
-  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
   const sectionRef = useRef<HTMLElement>(null);
 
+  // 🔥 throttled mouse tracking (smooth + low CPU)
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    setMousePos({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+
+    requestAnimationFrame(() => {
+      const rect = sectionRef.current!.getBoundingClientRect();
+      setMousePos({
+        x: ((e.clientX - rect.left) / rect.width) * 100,
+        y: ((e.clientY - rect.top) / rect.height) * 100
+      });
     });
   };
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Poppins:wght@200;300;400;500;600;700&display=swap');
-        
         .spotlight-section {
           font-family: 'Poppins', sans-serif;
-        }
-
-        @media (min-width: 1024px) {
-          .spotlight-section {
-            cursor: none;
-            mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-          }
         }
 
         .heading-spotlight {
           font-family: 'Space Grotesk', sans-serif;
         }
 
-        .spotlight-reveal {
+        /* 🔥 LIGHTWEIGHT SPOTLIGHT */
+        .spotlight-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(
-            circle 250px at var(--x) var(--y),
-            rgba(234, 179, 8, 0.15) 0%,
-            transparent 100%
-          );
           pointer-events: none;
           z-index: 2;
+          background: radial-gradient(
+            circle 220px at var(--x) var(--y),
+            rgba(234,179,8,0.18),
+            rgba(0,0,0,0.85) 60%
+          );
+          transition: background 0.1s linear;
         }
 
-        .custom-cursor {
-          position: absolute;
-          width: 40px;
-          height: 40px;
-          border: 1px solid #EAB308;
-          border-radius: 50%;
-          transform: translate(-50%, -50%);
-          left: var(--x);
-          top: var(--y);
-          pointer-events: none;
-          z-index: 100;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          mix-blend-mode: difference;
-          transition: width 0.3s, height 0.3s;
-        }
-
-        .spotlight-section:hover .custom-cursor {
-          width: 60px;
-          height: 60px;
-        }
-
+        /* 🔥 NO BLUR, ONLY OPACITY */
         .service-tile {
-          transition: all 0.5s ease;
+          opacity: 0.25;
+          transition: transform 0.4s ease, opacity 0.4s ease;
+          will-change: transform;
         }
 
-        @media (min-width: 1024px) {
-          .service-tile {
-            opacity: 0.15;
-            filter: grayscale(1) blur(2px);
-          }
-
-          .service-tile:hover {
-            opacity: 1;
-            filter: grayscale(0) blur(0);
-            transform: scale(1.05);
-          }
+        .service-tile:hover {
+          opacity: 1;
+          transform: translateY(-5px) scale(1.03);
         }
 
+        /* MOBILE CLEAN */
         @media (max-width: 1023px) {
-          .spotlight-reveal, .custom-cursor {
-            display: none !important;
+          .spotlight-overlay {
+            display: none;
           }
-        }
-
-        .text-glow {
-          text-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+          .service-tile {
+            opacity: 1;
+          }
         }
       `}</style>
 
       <section
         ref={sectionRef}
         id="services"
-        className="spotlight-section py-32 relative overflow-hidden min-h-screen flex flex-col justify-center bg-transparent"
+        className="spotlight-section py-32 relative overflow-hidden min-h-screen flex flex-col justify-center"
         onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        style={{ '--x': `${mousePos.x}px`, '--y': `${mousePos.y}px` } as any}
+        style={{
+          '--x': `${mousePos.x}%`,
+          '--y': `${mousePos.y}%`
+        } as any}
       >
-        {/* The Spotlight Mask */}
-        <div className="spotlight-reveal" />
-
-        {/* Custom Interactive Cursor */}
-        {isHovering && (
-          <div className="custom-cursor">
-            <div className="w-1 h-1 bg-[#EAB308] rounded-full" />
-          </div>
-        )}
-
-
+        {/* 🔥 Spotlight Layer */}
+        <div className="spotlight-overlay" />
 
         <div className="container mx-auto px-6 lg:px-12 relative z-10">
+
           {/* Header */}
-          <div className="mb-24 flex flex-col items-center text-center">
-            <div className="flex items-center gap-2 mb-6">
-              <span className="h-[1px] w-12 bg-[#EAB308]/30" />
-              <span className="text-[#EAB308] text-sm font-bold uppercase tracking-[0.4em]">Our Services</span>
-              <span className="h-[1px] w-12 bg-[#EAB308]/30" />
-            </div>
-            <h2 className="heading-spotlight text-6xl md:text-8xl font-bold text-white mb-8 tracking-tighter opacity-80 hover:opacity-100 transition-opacity">
+          <div className="mb-24 text-center">
+            <h2 className="heading-spotlight text-6xl md:text-8xl font-bold text-white mb-6">
               Illuminate Your <span className="text-[#EAB308]">Creative</span> Presence
             </h2>
-            <p className="text-white/40 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
-              Move your cursor to shed <span className="text-[#EAB308]">spotlight</span> on our specialized solutions designed for the digital frontier.
+            <p className="text-white/40 text-lg max-w-2xl mx-auto">
+              Move your cursor to reveal our specialized solutions.
             </p>
           </div>
 
-          {/* Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24">
-            {services.map((service, i) => (
-              <div
-                key={service.title}
-                className="service-tile group relative flex flex-col items-start"
-              >
-                {/* Category Label */}
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-[#EAB308] text-[10px] font-bold tracking-[0.3em] uppercase">
-                    {service.category}
-                  </span>
-                  <div className="h-[1px] w-8 bg-[#EAB308]/20 group-hover:w-16 transition-all duration-700" />
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16">
+            {services.map((service) => (
+              <div key={service.title} className="service-tile group">
+
+                {/* Category */}
+                <div className="mb-4 text-[#EAB308] text-xs tracking-widest uppercase">
+                  {service.category}
                 </div>
 
-                {/* Main Content */}
-                <div className="flex items-start gap-8">
-                  <div className="w-14 h-14 rounded-full border border-[#EAB308]/20 flex items-center justify-center shrink-0 group-hover:bg-[#EAB308] group-hover:border-[#EAB308] transition-all duration-500 overflow-hidden">
-                    <service.icon className="w-6 h-6 text-[#EAB308] group-hover:text-black transition-colors" />
+                <div className="flex gap-6">
+                  <div className="w-12 h-12 rounded-full border border-[#EAB308]/20 flex items-center justify-center group-hover:bg-[#EAB308] transition">
+                    <service.icon className="w-5 h-5 text-[#EAB308] group-hover:text-black" />
                   </div>
 
                   <div>
-                    <h3 className="heading-spotlight text-3xl font-bold text-white mb-4 group-hover:text-[#EAB308] transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#EAB308] transition">
                       {service.title}
                     </h3>
-                    <p className="text-white/50 text-base font-light leading-relaxed group-hover:text-white/80 transition-colors">
+                    <p className="text-white/50 text-sm leading-relaxed">
                       {service.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Interaction Indicator */}
-                <div className="mt-8 flex items-center gap-2 text-[#EAB308]/40 group-hover:text-[#EAB308] transition-all">
-                  <span className="text-xs font-bold uppercase tracking-widest translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all">Explore</span>
+                <div className="mt-6 flex items-center gap-2 text-[#EAB308]/50 group-hover:text-[#EAB308] transition">
+                  <span className="text-xs tracking-widest">EXPLORE</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
+
               </div>
             ))}
           </div>
+
         </div>
       </section>
     </>
